@@ -1,6 +1,6 @@
 import requests
-import os
-API_KEY = os.environ.get("NEWS_API_KEY")
+
+API_KEY = "f05d697c6c3849c3be8441d623e4f4f0"
 
 def fetch_news():
     url = f"https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=30&apiKey={API_KEY}"
