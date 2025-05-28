@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:8000/tech-news")
+fetch("https://securetech-hub.onrender.com/tech-news")
   .then(res => res.json())
   .then(data => {
     const main = data.main_story;
