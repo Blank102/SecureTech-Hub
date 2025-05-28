@@ -3,23 +3,44 @@ import requests
 API_KEY = "f05d697c6c3849c3be8441d623e4f4f0"
 
 def fetch_news():
-    url = f"https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=30&apiKey={API_KEY}"
-    response = requests.get(url).json()
+    try:
+        url = f"https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=30&apiKey={API_KEY}"
+        response = requests.get(url)
 
-    # Filter out articles without images
-    all_articles = [article for article in response["articles"] if article.get("urlToImage")]
+        # Log status and text for debugging
+        print("NewsAPI status:", response.status_code)
+        print("NewsAPI body:", response.text)
 
-    # Now slice after filtering
-    top_stories = all_articles[:5]
-    main_story = top_stories[0]
-    secondary_stories = top_stories[1:]
-    other_articles = all_articles[5:]
+        # Raise an error if response failed (like 401, 403, etc.)
+        response.raise_for_status()
 
+        data = response.json()
+
+        if data.get("status") != "ok":
+            return fallback()
+
+        articles = data.get("articles", [])
+        top_stories = articles[:5]
+        main_story = top_stories[0] if top_stories else {}
+        secondary_stories = top_stories[1:] if len(top_stories) > 1 else []
+        other_articles = articles[5:] if len(articles) > 5 else []
+
+        return {
+            "main_story": main_story,
+            "secondary_stories": secondary_stories,
+            "other_articles": other_articles
+        }
+
+    except Exception as e:
+        print("⚠️ fetch_news() failed:", str(e))
+        return fallback()
+
+
+def fallback():
     return {
-        "main_story": main_story,
-        "secondary_stories": secondary_stories,
-        "other_articles": other_articles
+        "main_story": {},
+        "secondary_stories": [],
+        "other_articles": []
     }
-
 
 

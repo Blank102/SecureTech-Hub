@@ -26,4 +26,6 @@ async def serve_home(request: Request):
 
 @app.get("/tech-news")
 def get_tech_news():
-    return fetch_news()
+    data = fetch_news()
+    print("Sending tech-news:", data)
+    return data
