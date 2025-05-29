@@ -1,27 +1,39 @@
+import os
 import requests
 
-API_KEY = "f05d697c6c3849c3be8441d623e4f4f0"
+API_KEY = "47e03201216d14e414977d626edffadc"  # Or hardcode for testing
+GNEWS_BASE = "https://gnews.io/api/v4"
 
 def fetch_news():
     try:
-        url = f"https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=30&apiKey={API_KEY}"
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
-                          (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        }
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
+        headers = {"User-Agent": "Mozilla/5.0"}
 
-        data = response.json()
+        # Request 1: Topic = technology
+        url_tech = f"{GNEWS_BASE}/top-headlines?topic=technology&lang=en&token={API_KEY}"
+        response_tech = requests.get(url_tech, headers=headers)
+        response_tech.raise_for_status()
+        articles_tech = response_tech.json().get("articles", [])
 
-        if data.get("status") != "ok":
-            return fallback()
+        # Request 2: Query = ai + cybersecurity
+        url_ai = f"{GNEWS_BASE}/search?q=ai+cybersecurity&lang=en&token={API_KEY}"
+        response_ai = requests.get(url_ai, headers=headers)
+        response_ai.raise_for_status()
+        articles_ai = response_ai.json().get("articles", [])
 
-        articles = data.get("articles", [])
-        top_stories = articles[:5]
+        # Combine and de-duplicate based on 'url'
+        combined = articles_tech + articles_ai
+        seen_urls = set()
+        unique_articles = []
+        for article in combined:
+            if article["url"] not in seen_urls:
+                unique_articles.append(article)
+                seen_urls.add(article["url"])
+
+        # Slice and organize
+        top_stories = unique_articles[:5]
         main_story = top_stories[0] if top_stories else {}
         secondary_stories = top_stories[1:] if len(top_stories) > 1 else []
-        other_articles = articles[5:] if len(articles) > 5 else []
+        other_articles = unique_articles[5:] if len(unique_articles) > 5 else []
 
         return {
             "main_story": main_story,
@@ -30,7 +42,7 @@ def fetch_news():
         }
 
     except Exception as e:
-        print("⚠️ fetch_news() failed:", str(e))
+        print("⚠️ fetch_news() failed:", e)
         return fallback()
 
 
@@ -40,5 +52,3 @@ def fallback():
         "secondary_stories": [],
         "other_articles": []
     }
-
-

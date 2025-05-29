@@ -21,9 +21,9 @@ if (main.title.includes(" - ")) {
 
 mainDiv.innerHTML = `
    <a href="${main.url}" target="_blank" class="main-article-link">
-    <img src="${main.urlToImage}" onerror="this.onerror=null;this.src='/static/img/news.png';">
+    <img src="${main.image}" onerror="this.onerror=null;this.src='/static/img/news.png';">
     <h2 class="main-title">${title}</h2>
-    <p class="main-source">${source}</p>
+    <p class="main-source">${main.source.name}</p>
     <p class="main-desc"> ${main.description || 'No description available.'}</p>
   </a>
 `;
@@ -46,10 +46,10 @@ secondary.forEach(article => {
 
   li.innerHTML = `
     <a href="${article.url}" target="_blank" class="sec-article-link">
-      <img src="${article.urlToImage}" onerror="this.onerror=null;this.src='/static/img/news.png';">
+      <img src="${article.image}" onerror="this.onerror=null;this.src='/static/img/news.png';">
       <div class="sec-text"> 
         <h4 class="sec-title">${title}</h4>
-        <p class="sec-source">${source}</p>
+        <p class="sec-source">${article.source.name}</p>
       </div> 
     </a>
   `;
@@ -74,11 +74,11 @@ others.forEach(article => {
 
   card.innerHTML = `
     <a href="${article.url}" target="_blank" class="other-article-link">
-      <img src="${article.urlToImage}" 
+      <img src="${article.image}" 
      onerror="this.onerror=null;this.src='/static/img/news.png';">
      <div class="news-text">
       <h3 class="other-title">${title}</h3>
-      <p class="other-source">${source}</p>
+      <p class="other-source">${article.source.name}</p>
       <p class="other-desc">${article.description || 'No description available.'}</p>
      </div> 
     </a>
