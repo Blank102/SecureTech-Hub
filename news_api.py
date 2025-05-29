@@ -5,13 +5,11 @@ API_KEY = "f05d697c6c3849c3be8441d623e4f4f0"
 def fetch_news():
     try:
         url = f"https://newsapi.org/v2/top-headlines?category=technology&language=en&pageSize=30&apiKey={API_KEY}"
-        response = requests.get(url)
-
-        # Log status and text for debugging
-        print("NewsAPI status:", response.status_code)
-        print("NewsAPI body:", response.text)
-
-        # Raise an error if response failed (like 401, 403, etc.)
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
+                          (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
 
         data = response.json()
