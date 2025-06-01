@@ -27,10 +27,19 @@ body {
  src: url(/static/fonts/static/Tourney_SemiExpanded-Light.ttf)
 }
 
+@font-face {
+ font-family: "audio";
+ src: url(/static/fonts/Audiowide-Regular.ttf)
+}
+
+
 h1 {
   margin-top: -20px;
   margin-left: -10px;
   color: #ffffff;
+  font-family: audio;
+  font-weight: bolder;
+  font-size: 40px;
 }
 
 h2 {
@@ -278,6 +287,16 @@ h2 {
     padding: 0;
   }
 
+  h1 {
+  margin-top: -20px;
+  margin-left: -10px;
+  color: #ffffff;
+  font-family: audio;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+
   .top-label {
     writing-mode: horizontal-tb;  
     transform: none;              
@@ -285,6 +304,8 @@ h2 {
     margin-bottom: 1rem;         
     font-size: 24px;
     margin-top: 0 !important;
+    font-family: patua;
+    letter-spacing: 0;
   }
 
   .top-stories-wrapper {
