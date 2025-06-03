@@ -9,7 +9,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -286,6 +286,11 @@ h2 {
   flex-shrink: 0;
 }
 
+.other-desc {
+    margin-top: -8px;
+    font-size: 18px;
+  }
+
 
 /* Mobile Size */
 
@@ -306,7 +311,7 @@ h2 {
   color: #ffffff;
   font-family: audio;
   font-weight: bolder;
-  font-size: 30px;
+  font-size:28px;
 }
 
 
@@ -361,8 +366,8 @@ h2 {
   font-size: 12px;
 }
 
-.main-source {
-  font-size: 10px;
+.main-source, .sec-source, .other-source {
+  font-size: 11px;
   color: #ffec81;
   margin-top: -10px;
 }
@@ -380,7 +385,6 @@ h2 {
 }
 
 .sec-source {
-  font-size: 12px;
   color: #ffec81;
   margin-top: 6px;
 }
@@ -412,6 +416,14 @@ h2 {
     max-width: 320px;
     height: auto;
     margin-bottom: 1rem;
+  }
+
+  .other-title {
+    font-size: 18px;
+  }
+
+  .other-desc {
+    font-size: 15px;
   }
 
 }
