@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-fetch("https://backend-dj3k2q.fly.dev/tech-news")
+fetch("")
   .then(res => res.json())
   .then(data => {
     const main = data.main_story;
