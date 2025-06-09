@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureTech Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="static/img/globe.png">
+</head>
+<body>
+
+<nav class="top-nav">
+  <h1 class="title">SecureTech Hub</h1>
+ 
+  <button class="hamburger" id="hamburger">&#9776;</button>  
+
+  <div class="links" id="nav-links">
+    <a href="news/news-index.html" class="nav-link">News</a>
+    <span>/</span>
+    <a href="index.html" class="nav-link active">Awareness</a>
+    <span>/</span>
+    <a href="quiz/quiz.html" class="nav-link">Quiz</a>
+  </div>
+</nav>
+
+  <section class="intro-section" id="introSection">
+    <div class="intro-wrap">
+      <h1 class="highlight-title float-box">
+        WHAT IS<br>
+        <span class="highlight-top">CYBER</span>
+        <span class="highlight-bottom">SECURITY?</span>
+      </h1>
+      <p>
+        Cyber security is the practice of protecting digital devices, networks, and sensitive data from cyber threats such as hacking, malware, and phishing attacks." It involves a range of strategies, technologies, and best practices designed to safeguard computers, networks, and data from cyber attacks.
+        </p>
+        <p>
+        Cybersecurity is all about protecting your computer, phone, or any digital device from hackers and online threats. By acquiring knowledge of cyber attacks and cyber security we can secure and defend ourselves from various cyber attacks like phishing and DDoS attacks.
+        </p>
+        <p>
+        In short, cybersecurity keeps your online world safe and secure. It ensures that sensitive information remains confidential, intact, and accessible only to authorized users.
+      </p>
+    </div>
+  </section>
+
+  <nav class="section-bar">
+  <ul class="section-list">
+    <li><a href="#threatSection">Threats</a></li>
+    <li><a href="#breachSection">Breaches</a></li>
+    <li><a href="#emailSection">Fake Email</a></li>
+    <li><a href="#preventionSection">Prevention</a></li>
+  </ul>
+</nav>
+
+  <section class="threats-section" id="threatSection">
+  <h1 class="threats">Types Of Threats</h1>  
+  <div class="threats-container">
+    <div class="threat-buttons">
+      <button class="threat-btn malware active" onclick="showThreat('malware')">Malware</button>
+      <button class="threat-btn phishing" onclick="showThreat('phishing')">Phishing</button>
+      <button class="threat-btn ransomware" onclick="showThreat('ransomware')">Ransomware</button>
+      <button class="threat-btn social" onclick="showThreat('social')">Social Engineering</button>
+      <button class="threat-btn ddos" onclick="showThreat('ddos')">DDoS</button>
+    </div>
+
+    <div class="threat-info" id="threat-info">
+      <div class="threat-text malware active" id="malware">
+        <h2>Malware</h2>
+        <p>Malware, short for “malicious software,” refers to any program or file intentionally designed to cause damage to a computer, server, client, or network. This includes viruses, worms, trojans, spyware, adware, and rootkits. Malware can disrupt operations, steal sensitive information, monitor user activity, or give attackers unauthorized access to systems. It typically spreads through infected websites, email attachments, software downloads, or USB devices.</p>
+      </div>
+      <div class="threat-text phishing" id="phishing">
+        <h2>Phishing</h2>
+        <p>Phishing is a form of social engineering in which attackers impersonate legitimate organizations via email, text message, or websites to trick individuals into revealing sensitive information. Victims are often lured into clicking malicious links or downloading harmful attachments, resulting in compromised credentials, financial loss, or malware infections. Advanced phishing techniques include spear-phishing (targeted attacks) and clone phishing (replicating real emails).</p>
+      </div>
+      <div class="threat-text ransomware" id="ransomware">
+        <h2>Ransomware</h2>
+        <p>Ransomware is a type of malware that encrypts a victim’s files or locks access to their systems, demanding a ransom payment—usually in cryptocurrency—to restore access. It often spreads through phishing emails, exploit kits, or malicious downloads. Ransomware attacks can disrupt entire organizations, hospitals, and governments, causing severe financial and operational damage. Even paying the ransom does not guarantee recovery of data.</p>
+      </div>
+      <div class="threat-text social" id="social">
+        <h2>Social Engineering</h2>
+        <p>Social engineering is the psychological manipulation of people into performing actions or divulging confidential information. Unlike technical attacks, it exploits human error and trust. Techniques include pretexting, baiting, tailgating, and impersonation. Attackers may pose as trusted entities—such as coworkers or IT staff—to gain access to restricted systems or data. Effective cybersecurity requires educating users to recognize and resist such tactics.</p>
+      </div>
+      <div class="threat-text ddos" id="ddos">
+        <h2>DDoS Attacks</h2>
+        <p>A Distributed Denial of Service (DDoS) attack aims to make an online service or network unavailable by overwhelming it with a flood of internet traffic from multiple sources. This coordinated attack can exhaust server resources, slow down services, or crash websites. DDoS attacks are often used as a distraction while other malicious activities occur or to pressure businesses during extortion attempts. Mitigation requires scalable infrastructure and real-time traffic monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="carousel-section" id="breachSection">
+
+  <h1 class="breaches-title">Real Life Breaches</h1>
+  
+
+  <button class="arrow left" onclick="scrollCarousel(-1)">&#10094;</button>
+  <div class="carousel">
+
+    <div class="card title">
+      <h1>REAL LIFE BREACHES</h1>
+    </div>
+
+    <div class="card one">
+      <h3 class="card-title" style="display: none;">T-Mobile breach exposes millions</h3>
+      <p class="card-story" style="display: none;">
+      T-Mobile experienced a major data breach disclosed in January 2023, in which hackers accessed personal information of roughly 37 million customers by exploiting an improperly secured Application Programming Interface (API). The breach began around November 25, 2022, and was discovered on January 5, 2023. The compromised data included names, phone numbers, email addresses, dates of birth, and account details—though sensitive info like Social Security numbers, PINs, and passwords were not exposed. T-Mobile quickly shut down access to the API and reported the incident to regulators. As this was the company's eighth breach since 2018, it sparked criticism and led to increased investment in cybersecurity, including a $150 million initiative and a $31.5 million federal settlement to improve future data protection.
+      </p>
+      <img class="image" src="static/img/t-mobile.jpg"></img>
+      <div class="headline">T-Mobile breach exposes millions</div>
+      <button class="expand">+</button>
+    </div>
+
+    <div class="card two">
+      <h3 class="card-title" style="display: none;">Operation Aurora</h3>
+      <p class="card-story" style="display: none;">
+      Operation Aurora was a sophisticated cyber-espionage campaign discovered by Google in January 2010, believed to have begun in mid-2009. The attackers, suspected to be a Chinese state-sponsored group (possibly APT17), targeted at least 20 major U.S. companies including Google, Adobe, Yahoo, and Northrop Grumman. They exploited a zero-day vulnerability in Internet Explorer 6, delivered via spear-phishing or compromised websites, to install a custom malware known as Hydraq. This backdoor allowed attackers to remotely access internal systems, steal source code, and monitor the Gmail accounts of Chinese human rights activists. The attack highlighted vulnerabilities in enterprise cybersecurity and marked a major shift in how companies approached nation-state threats.
+      </p>
+      <img class="image" src="static/img/aurora.jpg"></img>
+      <div class="headline">Operation Aurora</div>
+      <button class="expand">+</button>
+    </div>
+
+    <div class="card three">
+      <h3 class="card-title" style="display: none; font-size: 1px;">Equifax leak impacts millions</h3>
+      <p class="card-story" style="display: none;">
+      The Equifax data breach was particularly dangerous because of the sensitive information that was compromised. This information can be used to commit identity theft and other crimes. The breach also affected a large number of people, which made it one of the largest data breaches in history.
+       Private records of 147.9 million Americans along with 15.2 million British citizens and about 19,000 Canadian citizens were compromised in the breach, making it one of the largest cybercrimes related to identity theft. The hackers gained access to sensitive information such as social security numbers, dates of birth, and addresses. This breach had a major impact on the credit reporting agency and its customers.
+      </p>
+      <img class="image" src="static/img/equifax.jpg"></img>
+      <div class="headline">Equifax leak impacts millions</div>
+      <button class="expand">+</button>
+    </div>
+
+    <div class="card four">
+      <h3 class="card-title" style="display: none;">The Yahoo Data Breach</h3>
+      <p class="card-story" style="display: none;">
+       This massive data breach occurred in 2014 and affected more than three billion Yahoo users. The hackers gained access to sensitive information such as names, dates of birth, addresses, and passwords. This breach had a major impact on the internet giant and its customers.
+       The Yahoo cyber attack is the largest data breach in history. The sheer scale of the breach is staggering. Additionally, the sensitive information that was compromised could be used to commit identity theft and other crimes. The cyber-attack targeted 500 million accounts and obtained account names, email addresses, telephone numbers, date of births, hashed passwords, and some encrypted and unencrypted security questions.
+      </p>
+      <img class="image" src="static/img/yahoo.jpg"></img>
+      <div class="headline">The Yahoo Data Breach</div>
+      <button class="expand">+</button>
+    </div>
+  </div>
+  <button class="arrow right" onclick="scrollCarousel(1)">&#10095;</button>
+</div>
+
+<!-- Fullscreen overlay -->
+<div class="overlay" id="overlay">
+  <div class="content">
+    <button class="close" onclick="closeOverlay()">✕</button>
+    <h2 id="overlayTitle"></h2>
+    <p id="overlayStory"></p>
+  </div>
+</div>
+
+<section class="email-section" id="emailSection">
+  <div class="email-header">
+    <h1>Fake Email Detector</h1>
+    <h5>Hover over the underlined text to see the red flags.</h5>
+  </div>
+    <div class="fake-email">
+      <div class="email-header">
+        <p>
+          <span class="highlight" data-tooltip="Suspicious sender domain — 'micr0soft' is misspelled.">
+            From: support@micr0soft-secure.com
+          </span><br>
+          <span>To: you@example.com</span><br>
+          <span class="highlight" data-tooltip="Generic urgent subject line to create panic.">
+            Subject: Urgent - Action Required!
+          </span>
+        </p>
+      </div>
+
+      <!-- Email Body -->
+      <div class="email-body">
+        <p class="highlight" data-tooltip="Generic greeting — doesn't include your name.">
+          Dear User,
+        </p>
+
+        <p>
+          We have detected unusual activity on your account. To ensure your security, please 
+          <span class="highlight" data-tooltip="Vague call to action — no context or clarity.">verify your identity</span> 
+          by clicking the link below.
+        </p>
+
+        <p>
+          <span class="highlight" data-tooltip="Misleading link — domain doesn't match real Microsoft site.">
+            https://microsoft.support-reset.com
+          </span>
+        </p>
+
+        <p class="highlight" data-tooltip="Urgent threat to create fear and force action.">
+          If you fail to act, your account will be suspended within 24 hours.
+        </p>
+
+        <p>
+          <span class="highlight" data-tooltip="Spelling/grammar mistake — common in phishing attempts.">
+            We sincerly apologize for any inconvinience.
+          </span>
+        </p>
+
+        <p>
+          <span class="highlight" data-tooltip="Requesting sensitive information directly is a clear phishing tactic.">
+            Please reply with your username and password to confirm your identity.
+          </span>
+        </p>
+
+        <p>Thank you,<br>
+        Microsoft Support Team</p>
+      </div>
+    </div>
+  </section>
+
+<section class="prevention-section" id="preventionSection">
+  <h2>Protect Yourself Online</h2>
+  <ul class="prevention-list">
+    <li>Use strong, unique passwords for every account.</li>
+    <li>Enable two-factor authentication (2FA).</li>
+    <li>Always check the sender's email address before clicking links.</li>
+    <li>Keep your devices and software updated.</li>
+    <li>Never share personal details over unsecured emails or messages.</li>
+    <li>Use a reputable antivirus and firewall.</li>
+    <li>Stay cautious of unsolicited attachments and links.</li>
+    <li>Regularly review your account activity and security settings.</li>
+  </ul>
+  <p class="quiz">Confident in your learnings? Test your skills right now!</p>
+  <a href="quiz/quiz.html" class="quiz-link">Take the Quiz</a>
+</section>
+
+<button id="scrollTopBtn" title="Go to top">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 15V5M10 5L5 10M10 5L15 10" stroke="white" stroke-width="2"/>
+  </svg>
+</button>
+  
+<script src="script.js"></script>
+
+</body>
+</html>

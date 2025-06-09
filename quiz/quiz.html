@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureTech Hub - Quiz</title>
+  <link rel="icon" type="image/png" href="/static/img/globe.png">
+  <style>
+
+/* NavBar */
+@font-face {
+ font-family: "patua";
+ src: url(/static/font/ADLaMDisplay-Regular.ttf)
+}
+
+@font-face {
+ font-family: "audio";
+ src: url(/static/font/Audiowide-Regular.ttf)
+}
+
+.hamburger {
+  display: none;
+  font-size: 25px;
+  background: none;
+  color: #ffec81;
+  border: none;
+  cursor: pointer;
+  margin-right: -5px;
+}
+.top-nav {
+  display: flex;
+  position: sticky;
+  background-color: rgba(16, 16, 16, 0.8);
+  backdrop-filter: blur(10px);
+  font-size: 20px;
+  z-index: 1000 !important;
+  width: inherit;
+  align-items: center;
+  height: 4.5rem;
+  padding-inline: 2rem;
+  z-index:500;
+  top:0;
+  margin-top:0;
+}
+.links {
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+  position: absolute;
+  right: 2rem;
+  margin-top: 0px;
+}
+.nav-link {
+  color: #ffec81;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family:monospace;
+  margin-top: 3px;
+}
+.nav-link.active {
+  opacity: 1;
+  color: #fff4b9;
+  ;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.top-nav span {
+  color: #aaa;
+}
+.title {
+  color: #ffffff;
+  font-family: audio;
+  font-weight: bolder;
+  font-size: 40px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #101010;
+  color: white;
+}
+.quiz-section {
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+.quiz-section h2 {
+  text-align: center;
+  margin-bottom: 2rem !important;
+  color: #ffffff;
+  font-size: 45px;
+  margin: 0;
+  font-family: patua;
+}
+.question {
+  margin-bottom: 1.8rem;
+  padding: 1rem;
+  background-color: #181818;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 1);
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.question:nth-child(1) {
+  border-left: 8px solid #f28b82;
+}
+.question:nth-child(2) {
+  border-left: 8px solid #ffd24b;
+}
+.question:nth-child(3) {
+  border-left: 8px solid #d7aefb;
+}
+.question:nth-child(4) {
+  border-left: 8px solid #a7ffeb;
+}
+.question:nth-child(5) {
+  border-left: 8px solid #aecbfa;
+}
+.question:nth-child(6) {
+  border-left: 8px solid #f28b82;
+}
+.question:nth-child(7) {
+  border-left: 8px solid #ffd24b;
+}
+.question:nth-child(8) {
+  border-left: 8px solid #d7aefb;
+}
+.question:nth-child(9) {
+  border-left: 8px solid #a7ffeb;
+}
+.question:nth-child(10) {
+  border-left: 8px solid #aecbfa;
+}
+.question p {
+  margin-bottom: 0.8rem;
+  font-weight: bold;
+}
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+button[type="submit"] {
+  display: block;
+  margin: 2rem auto 1rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #ffec81;
+  border: none;
+  color: #101010;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-family: patua;
+  font-size: 20px;
+}
+button[type="submit"]:hover {
+  background-color: #fff4b9;
+}
+#quiz-result {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+.modal-content {
+  background-color: #181818;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 1);
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  font-size: 25px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #ffec81;
+  cursor: pointer;
+}
+.close:hover {
+  color: white;
+}
+.incorrect-answer {
+  background-color: rgba(255, 0, 0, 0.15);
+  border-left: 4px solid red;
+  padding-left: 8px;
+}
+
+
+    /* Mobile Size */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: absolute !important;
+    right: 2rem;
+    z-index: 100;
+  }
+  .links {
+    position: absolute !important;
+    top: 3rem;
+    right: 3.5rem;
+    background-color: #202020;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px #fff4b9;
+    transition: all 0.5s;
+    gap: 0.5rem;
+    font-size: 18px;
+    display: none;
+    animation: fadeInUp 0s ease-out forwards !important;
+    z-index: 9999;
+  }
+  .nav-link {
+    animation: fadeInUp 0s ease-out forwards !important;
+    z-index: 100;
+  }
+  .links.show {
+    display: flex !important;
+  }
+  .links span {
+    display: none;
+  }
+  .body {
+    padding: 0 !important;
+  }
+  .title {
+    margin-left: -5px;
+    color: #ffffff;
+    font-family: audio;
+    font-weight: bolder;
+    font-size:28px;
+  }
+  .quiz-section h2 {
+   font-size: 30px
+  }
+  .question {
+   font-size: 15px;
+  }
+  .modal-content {
+   max-width: 300px;
+   font-size: 18px;
+  }
+}
+
+  </style>
+</head>
+<body>
+<nav class="top-nav">
+  <h1 class="title">SecureTech Hub</h1>
+ 
+  <button class="hamburger" id="hamburger">&#9776;</button>  
+
+  <div class="links" id="nav-links">
+    <a href="/news/news-index.html" class="nav-link">News</a>
+    <span>/</span>
+    <a href="/index.html" class="nav-link">Awareness</a>
+    <span>/</span>
+    <a href="quiz.html" class="nav-link active">Quiz</a>
+  </div>
+</nav> 
+
+  <section class="quiz-section">
+    <h2>Cybersecurity Quiz</h2>
+    <form id="quiz-form">
+
+      <div class="question">
+        <p>1. What is the main goal of cybersecurity?</p>
+        <label><input type="radio" name="q1" value="A"> To back up all files</label>
+        <label><input type="radio" name="q1" value="B"> To prevent physical theft</label>
+        <label><input type="radio" name="q1" value="C"> To protect digital systems and data from unauthorized access</label>
+      </div>
+
+      <div class="question">
+        <p>2. Which of the following is an example of malware?</p>
+        <label><input type="radio" name="q2" value="A"> VPN</label>
+        <label><input type="radio" name="q2" value="B"> Trojan horse</label>
+        <label><input type="radio" name="q2" value="C"> Antivirus software</label>
+      </div>
+
+      <div class="question">
+        <p>3. What kind of attack was used in the 2017 Equifax data breach?</p>
+        <label><input type="radio" name="q3" value="A"> Ransomware</label>
+        <label><input type="radio" name="q3" value="B"> Exploitation of a web application vulnerability</label>
+        <label><input type="radio" name="q3" value="C"> Phishing email</label>
+      </div>
+
+      <div class="question">
+        <p>4. What made the Yahoo data breach significant?</p>
+        <label><input type="radio" name="q4" value="A"> It was quickly resolved</label>
+        <label><input type="radio" name="q4" value="B"> It affected over 3 billion accounts</label>
+        <label><input type="radio" name="q4" value="C"> It was caused by a physical security flaw</label>
+      </div>
+
+      <div class="question">
+        <p>5. In a phishing email, which is the most likely red flag?</p>
+        <label><input type="radio" name="q5" value="A"> Generic greeting like 'Dear User'</label>
+        <label><input type="radio" name="q5" value="B"> A personalized subject line</label>
+        <label><input type="radio" name="q5" value="C"> Signature with full company details</label>
+      </div>
+
+      <div class="question">
+        <p>6. What is a DDoS attack?</p>
+        <label><input type="radio" name="q6" value="A"> Flooding a system with traffic to make it unavailable</label>
+        <label><input type="radio" name="q6" value="B"> Infecting it with ransomware</label>
+        <label><input type="radio" name="q6" value="C"> Intercepting wireless signals</label>
+      </div>
+
+      <div class="question">
+        <p>7. Operation Aurora was a targeted cyberattack on which type of entities?</p>
+        <label><input type="radio" name="q7" value="A"> Public schools</label>
+        <label><input type="radio" name="q7" value="B"> Major tech companies like Google</label>
+        <label><input type="radio" name="q7" value="C"> Personal devices</label>
+      </div>
+
+      <div class="question">
+        <p>8. Which prevention method helps the most in stopping unauthorized logins?</p>
+        <label><input type="radio" name="q8" value="A"> Using browser history</label>
+        <label><input type="radio" name="q8" value="B"> Enabling Two-Factor Authentication (2FA)</label>
+        <label><input type="radio" name="q8" value="C"> Restarting the device daily</label>
+      </div>
+
+      <div class="question">
+        <p>9. A red flag in a fake email link is:</p>
+        <label><input type="radio" name="q9" value="A"> Shortened URLs</label>
+        <label><input type="radio" name="q9" value="B"> Mismatched domain name</label>
+        <label><input type="radio" name="q9" value="C"> Company logos</label>
+      </div>
+
+      <div class="question">
+        <p>10. Cybersecurity awareness is most effective when:</p>
+        <label><input type="radio" name="q10" value="A"> Antivirus software is used</label>
+        <label><input type="radio" name="q10" value="B"> Combined with user training and secure practices</label>
+        <label><input type="radio" name="q10" value="C"> Firewalls are installed</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="result-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <p id="modal-score-text"></p>
+  </div>
+</div>
+
+  </section>
+
+  <script>
+  document.getElementById('quiz-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  let score = 0;
+  const answers = {
+    q1: 'C', q2: 'B', q3: 'B', q4: 'B', q5: 'A',
+    q6: 'A', q7: 'B', q8: 'B', q9: 'B', q10: 'B'
+  };
+
+  document.querySelectorAll(".incorrect-answer").forEach(el =>
+    el.classList.remove("incorrect-answer")
+  );
+
+  Object.keys(answers).forEach((q, i) => {
+    const selected = document.querySelector(`input[name="${q}"]:checked`);
+    const questionBlock = document.querySelectorAll(".question")[i];
+
+    if (selected) {
+      if (selected.value === answers[q]) {
+        score++;
+      } else {
+        questionBlock.classList.add("incorrect-answer");
+      }
+    }
+  });
+
+  document.getElementById("modal-score-text").textContent = `Your score: ${score}/10`;
+  document.getElementById("result-modal").style.display = "flex";
+});
+
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("result-modal").style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  const modal = document.getElementById("result-modal");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+</script>
+
+</body>
+</html>
