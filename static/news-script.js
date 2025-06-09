@@ -54,7 +54,7 @@ secondary.forEach(article => {
 
   li.innerHTML = `
     <a href="${article.url}" target="_blank" class="sec-article-link">
-      <img src="${article.image}" onerror="this.onerror=null;this.src='/static/img/news.png';">
+      <img src="${article.image}" onerror="this.onerror=null;this.src='img/news.png';">
       <div class="sec-text"> 
         <h4 class="sec-title">${title}</h4>
         <p class="sec-source">${article.source.name}</p>
@@ -82,7 +82,7 @@ others.forEach(article => {
   card.innerHTML = `
     <a href="${article.url}" target="_blank" class="other-article-link">
       <img src="${article.image}" 
-     onerror="this.onerror=null;this.src='/static/img/news.png';">
+     onerror="this.onerror=null;this.src='img/news.png';">
      <div class="news-text">
       <h3 class="other-title">${title}</h3>
       <p class="other-source">${article.source.name}</p>
