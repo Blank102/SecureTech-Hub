@@ -18,11 +18,9 @@ fetch("")
     // === MAIN STORY ===
 const mainDiv = document.getElementById("main-story");
 
-// Split title and source
 let title = main.title;
 let source = '';
 
-// Check if title contains a source with " - "
 if (main.title.includes(" - ")) {
   const splitIndex = main.title.lastIndexOf(" - ");
   title = main.title.slice(0, splitIndex);
@@ -31,7 +29,7 @@ if (main.title.includes(" - ")) {
 
 mainDiv.innerHTML = `
    <a href="${main.url}" target="_blank" class="main-article-link">
-    <img src="${main.image}" onerror="this.onerror=null;this.src='/static/img/news.png';">
+    <img src="${main.image}" onerror="this.onerror=null;this.src='img/news.png';">
     <h2 class="main-title">${title}</h2>
     <p class="main-source">${main.source.name}</p>
     <p class="main-desc"> ${main.description || 'No description available.'}</p>
@@ -64,7 +62,7 @@ secondary.forEach(article => {
     </a>
   `;
 
-  secondaryContainer.appendChild(li); // ✅ append <li> directly
+  secondaryContainer.appendChild(li);
 });
 
 // === REMAINING ARTICLES ===
@@ -73,7 +71,6 @@ others.forEach(article => {
   const card = document.createElement("div");
   card.className = "news-card";
 
-  // Remove source from title
   let title = article.title;
   let source = '';
   if (article.title.includes(" - ")) {

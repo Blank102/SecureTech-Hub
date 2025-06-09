@@ -31,17 +31,17 @@ body {
 
 @font-face {
  font-family: "patua";
- src: url(/static/font/ADLaMDisplay-Regular.ttf)
+ src: url(font/ADLaMDisplay-Regular.ttf)
 }
 
 @font-face {
  font-family: "tourney";
- src: url(/static/font/static/Tourney_SemiExpanded-Light.ttf)
+ src: url(font/static/Tourney_SemiExpanded-Light.ttf)
 }
 
 @font-face {
  font-family: "audio";
- src: url(/static/font/Audiowide-Regular.ttf)
+ src: url(font/Audiowide-Regular.ttf)
 }
 
 /* NavBar */
